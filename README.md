@@ -1,3 +1,4 @@
+```
 features we agreed on
 usbc
 charging through headphone jack as a joke (like ipod shuffles)
@@ -34,3 +35,4 @@ https://amzn.to/3mIY4ds
 https://mightydevices.com/index.php/2018/02/mipi-dsi-tx-interface-for-ipod-nano-7th-gen/
 https://www.adafruit.com/product/4822?gad_source=1&gclid=Cj0KCQiA84CvBhCaARIsAMkAvkIfKcFIZ1YRcLZlnPZCGmJfBcq1hozg6WGG8RXhNGVHPp9D9PkSPV4aAuD5EALw_wcB
 https://www.amazon.com/Mini-PCI-Adapter-Card-Module/dp/B092D2CG3K/ref=asc_df_B092D2CG3K/?tag=hyprod-20&linkCode=df0&hvadid=633001802341&hvpos=&hvnetw=g&hvrand=5745356031159117388&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9031110&hvtargid=pla-1428676088820&psc=1&mcid=3e63f7e410e83ec68b17418e213ef707&gclid=Cj0KCQiA84CvBhCaARIsAMkAvkIoCT99mX2g2V9Xt3FDolCpoTvIjQI1PadMJSarNVRRnkk0kOCLvoIaAu4UEALw_wcB
+```
