@@ -70,7 +70,7 @@ fn main() {
 
     let num_disks: usize = std::env::args()
         .collect::<Vec<String>>()
-        .get(0)
+        .get(1)
         .unwrap_or(&String::new())
         .parse::<usize>()
         .unwrap_or(3);
