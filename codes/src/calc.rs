@@ -131,6 +131,11 @@ fn differentiate_term(term: &str) -> String {
         let mut iter = term.split("^");
         let base = iter.next().unwrap();
         let exponent = iter.next().unwrap();
+        if let Ok(base) = base.parse::<f64>() {
+            if let Ok(exponent) = exponent.parse::<f64>() {
+                return format!("{}^{} * ln({})", base, exponent, base);
+            }
+        }
         return format!(
             "({})*({}^({}-1))",
             exponent,
@@ -148,7 +153,7 @@ fn differentiate_term(term: &str) -> String {
     }
 
     if term.starts_with("x^") {
-        return term.replace("x", "").replace("^", "");
+        return term.clone().replace("x", "").replace("^", "");
     }
 
     term.to_string()
