@@ -5,12 +5,22 @@ fn main() {
         if input.get(0).unwrap_or(' ') == 'q' {
             break;
         }
-
     }
 }
 
 fn evaluate(expr: &str) -> Option<i32> {
     todo!();
+}
+
+fn trig(num: i32) -> i32 {
+    (num as f64)
+}
+
+fn rand(lower: i32, upper: i32) -> i32 {
+    if upper <= lower {
+        return upper;
+    }
+    ((((&vec![2, 3]) as *const Vec<i32>) as i32) % (upper - lower) + lower).abs()
 }
 
 fn get_input(message: &str) -> String {
