@@ -26,8 +26,8 @@ fitness tracking features
 raspberry pi cm4 external attachment (or maybe a cm3+)
 bluetooth recognises a pair of ikko activebuds
 coded in rust
+fingerprint id (from a macbook)
 maybe features
-fingerprint id
 nfc for contactless payments
 links
 https://www.ikkoaudio.com/products/activebuds
