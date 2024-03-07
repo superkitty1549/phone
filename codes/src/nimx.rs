@@ -13,7 +13,30 @@ impl Nim {
         }
     }
 
-    fn display(&self)
+    fn sum(&self) -> usize {
+        self.piles.iter().fold(0, |acc, &pile| acc ^ pile)
+    }
+
+    fn optimal_move(&mut self) {
+        let nim_sum_value = self.sum();
+
+        if nim_sum_value == 0 {
+            if let Some(max_pile_index) = self.piles.iter().enumerate().max_by_key(|&(_, &x)| x) {
+                let pile_index = max_pile_index.0;
+                self.piles[pile_index] /= 2;
+            }
+        } else if let Some((pile_index, pile)) = self.piles.iter_mut().enumerate().find(|&(_, &mut pile)| pile ^ nim_sum_value < pile) {
+            *pile ^= nim_sum_value;
+        }
+    }
+
+    fn apply_move(&mut self, idx: usize, amt: usize) -> bool {
+        if idx >= self.num {
+            println!("u cant do that");
+            return 1;
+        }
+        if 
+    }
 }
 
 fn main() {
