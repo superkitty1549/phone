@@ -1,11 +1,14 @@
 use rand::Rng;
 use std::io;
 
+
 fn main() {
     let mut rng = rand::thread_rng();
 
+
     loop {
         play_game(&mut rng);
+
 
         println!("or... wanna play again? [y][n] ");
         let play_again = read_input().trim().to_lowercase();
@@ -14,6 +17,7 @@ fn main() {
         }
     }
 }
+
 
 fn play_game(rng: &mut impl Rng) {
     // Get the number of piles from the player
@@ -29,13 +33,16 @@ fn play_game(rng: &mut impl Rng) {
         }
     }
 
+
     // Generate a random number of objects for each pile
     let mut piles: Vec<u32> = (0..num_piles).map(|_| rng.gen_range(0..=20)).collect();
+
 
     // Game loop
     while !piles.iter().all(|&x| x == 0) {
         // Display the current state of piles
         println!("current position: {:?}", piles);
+
 
         // Player's move
         println!("ur turn, or quit if ur a coward");
@@ -51,7 +58,18 @@ fn play_game(rng: &mut impl Rng) {
         }
         let mut updated_piles = piles.clone();
         update_piles(&mut updated_piles, &player_move);
+
+
+        // Ensure only one pile has been changed
+        let changes = piles.iter().zip(updated_piles.iter()).filter(|&(a, b)| a != b).count();
+        if changes != 1 {
+            println!("You can only change one pile at a time.");
+            continue;
+        }
+
+
         println!("ur move: {:?}", updated_piles);
+
 
         // Check if the game is won after player's move
         if updated_piles.iter().all(|&x| x == 0) {
@@ -59,10 +77,12 @@ fn play_game(rng: &mut impl Rng) {
             break;
         }
 
+
         // Computer's move
         let computer_move = compute_move(&updated_piles, rng);
         update_piles(&mut piles, &computer_move);
         println!("computer's move: {:?}", piles);
+
 
         // Check if the game is won after computer's move
         if piles.iter().all(|&x| x == 0) {
@@ -72,6 +92,7 @@ fn play_game(rng: &mut impl Rng) {
     }
 }
 
+
 // Function to read input from user
 fn read_input() -> String {
     let mut input = String::new();
@@ -79,17 +100,20 @@ fn read_input() -> String {
     input.trim().to_string()
 }
 
+
 // Function to parse player's move
 fn parse_move(input: &str, _piles: &[u32]) -> Vec<u32> {
     if input.trim().to_lowercase() == "quit" {
         return vec![];
     }
 
+
     input
         .split(',')
         .map(|s| s.trim().parse().unwrap_or(0))
         .collect()
 }
+
 
 // Function to update the state of piles based on the move
 fn update_piles(piles: &mut Vec<u32>, movement: &[u32]) {
@@ -98,9 +122,11 @@ fn update_piles(piles: &mut Vec<u32>, movement: &[u32]) {
     }
 }
 
+
 fn compute_move(piles: &[u32], _rng: &mut impl Rng) -> Vec<u32> {
     let mut piles = piles.to_vec();
     let nim_sum = piles.iter().fold(0, |acc, &pile| acc ^ pile);
+
 
     if nim_sum == 0 {
         // Halve the largest pile if nim sum is zero
@@ -118,6 +144,7 @@ fn compute_move(piles: &[u32], _rng: &mut impl Rng) -> Vec<u32> {
             }
         }
     }
+
 
     piles
 }
