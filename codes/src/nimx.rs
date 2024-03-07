@@ -32,10 +32,15 @@ impl Nim {
 
     fn apply_move(&mut self, idx: usize, amt: usize) -> bool {
         if idx >= self.num {
-            println!("u cant do that");
+            println!("u cant do dat");
             return 1;
         }
-        if 
+        if amt > self.piles[idx] {
+            println!("u cant do dat");
+            return 1;
+        }
+        self.piles[idx] -= amt;
+        return 0;
     }
 }
 
@@ -50,7 +55,22 @@ fn main() {
         .collect::<Vec<usize>>();
 
     let game: Nim = Nim::new(num_piles, pile_sizes);
+    loop {
+        
+        if game.piles == vec![0; num] {
+            println!("U win!");
+            return 0;
+        }
+    }
 
+}
+
+fn 2p(game: &mut Game) {
+
+}
+
+fn 1p(game: &mut Game) {
+    
 }
 
 fn get_input(message: &str) -> String {
